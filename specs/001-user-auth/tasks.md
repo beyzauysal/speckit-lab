@@ -35,8 +35,8 @@ Tasks marked with **[P]** can run in parallel (different files, no task dependen
 
 **Purpose**: Project initialization, dependency installation, tooling configuration
 
-- [ ] T001 Initialize TypeScript/Express.js project with `npm init -y` and install dependencies (express, typescript, ts-node, @types/express, @types/node) in root directory
-- [ ] T002 [P] Create project directories per implementation plan: `src/` (config, models, services, middleware, routes, utils), `tests/` (unit, integration, e2e), `migrations/`, `docker/` in root
+- [X] T001 Initialize TypeScript/Express.js project with `npm init -y` and install dependencies (express, typescript, ts-node, @types/express, @types/node) in root directory
+- [X] T002 [P] Create project directories per implementation plan: `src/` (config, models, services, middleware, routes, utils), `tests/` (unit, integration, e2e), `migrations/`, `docker/` in root
 - [ ] T003 [P] Create `tsconfig.json` with strict mode enabled in root directory (strict: true, no implicit any, sourceMap enabled)
 - [ ] T004 [P] Create `.env.example` file in root with all required environment variables (DB_HOST, DB_PORT, DB_NAME, DB_USER, JWT_SECRET, REFRESH_SECRET, EMAIL_*, REDIS_URL, LOG_LEVEL)
 - [ ] T005 [P] Create `jest.config.js` with ts-jest preset, test coverage threshold 80%, and supertest for API testing in root
