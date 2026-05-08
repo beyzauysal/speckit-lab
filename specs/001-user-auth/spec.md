@@ -225,3 +225,26 @@ A user has forgotten their password and needs to regain access. They request a p
 - **Brute Force Protection** *(Clarified)*: Account lockout is per-user (not per-IP), preventing attackers from bypassing via IP rotation while still locking legitimate users after repeated failures. Lockout duration is fixed at 15 minutes; users can unlock via email link for faster recovery.
 - **Data Retention & Privacy** *(Clarified)*: Account deletion follows GDPR/CCPA standards with 30-day grace period. All PII deleted after grace expires but anonymized audit logs retained for 2 years to support fraud investigation and compliance audits. Users can cancel deletion requests during grace period.
 - **Audit Log Anonymization** *(Clarified)*: After account deletion, audit logs are anonymized (user_id replaced with hash, email removed) but remain queryable for date ranges, event types, and IP addresses to support security investigations without revealing deleted user identities.
+
+## Future: Frontend UI Extension (Out of Scope v1)
+
+This specification defines the backend authentication API. A future frontend UI extension could present these pages:
+
+- **Login**: Email/password entry with "Forgot Password" and "Register" links
+- **Register**: Email/password/confirm-password with terms acceptance
+- **Forgot Password**: Email entry to initiate password reset flow
+- **Reset Password**: New password entry (accessed via email token link)
+- **Dashboard / Account**: User account info and multi-device session management (logout from specific device or all devices)
+
+**Design Approach** (reference only):
+- Mobile-first, centered card layout with max-width ~480px
+- White background, blue primary button, rounded input fields (6-12px radius)
+- Simple line-art illustration at page top
+- Responsive typography and generous whitespace
+- WCAG 2.1 AA accessibility minimum
+
+**Scope**: Backend authentication API (this specification) remains the authoritative source. Frontend would consume the 10 endpoints defined in `contracts/auth-endpoints.md`. No implementation or design work on UI planned for v1.
+
+---
+
+**Note**: This specification documents Phase 1 (backend authentication API). Phase 2+ may include frontend UI as described above, but such work is contingent on Phase 1 completion and is entirely optional.
