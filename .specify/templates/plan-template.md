@@ -36,7 +36,8 @@
 - [ ] **TypeScript Strict Gate**: Implementation confirms `strict: true`, typed
   module boundaries, and no untracked `any` usage.
 - [ ] **Testing Gate**: Test strategy follows 70/20/10 pyramid target and
-  preserves >=80% business-logic coverage.
+  preserves >=80% line, >=75% branch, and >=75% mutation coverage; tests are
+  planned before implementation (TDD).
 - [ ] **Documentation Gate**: Exported APIs include JSDoc plan and README/docs
   updates for changed behavior.
 

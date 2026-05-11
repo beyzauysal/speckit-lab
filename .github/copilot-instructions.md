@@ -9,7 +9,7 @@ shell commands, and other important information, read the current plan:
 **API Contracts**: specs/001-user-auth/contracts/auth-endpoints.md
 **Quickstart**: specs/001-user-auth/quickstart.md
 
-**Constitution**: .specify/memory/constitution.md (4 principles: Clean Code, TypeScript Strict, Testing Pyramid 80%, JSDoc Mandatory)
+**Constitution**: .specify/memory/constitution.md (4 principles: Clean Code, TypeScript Strict, Testing Principles with TDD + 70/20/10 + 80/75/75 thresholds, JSDoc Mandatory)
 
 **Technical Stack**: 
 - Express.js + TypeScript (strict mode)

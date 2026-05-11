@@ -7,6 +7,10 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
+**Constitution Alignment**: Test scenarios MUST be written from requirements
+before implementation, and coverage intent SHOULD reflect the testing pyramid
+(~70% unit / ~20% integration / ~10% E2E).
+
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,

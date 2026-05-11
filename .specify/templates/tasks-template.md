@@ -10,7 +10,10 @@ description: "Task list template for feature implementation"
 
 **Tests**: Tests are REQUIRED by constitution. Every user story MUST include
 unit/integration/e2e tasks aligned with the testing pyramid, and coverage tasks
-MUST preserve the 80% business-logic threshold.
+MUST preserve >=80% line, >=75% branch, and >=75% mutation thresholds.
+
+**Testing Workflow**: Tasks MUST follow RED-GREEN-REFACTOR. Create failing tests
+first, implement minimal code to pass, then refactor while keeping tests green.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -87,6 +90,8 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T011a [P] [US1] Add Jest unit tests for business logic in tests/unit/
+- [ ] T011b [US1] Add Supertest coverage for API behavior in tests/integration/
 
 ### Implementation for User Story 1
 
@@ -111,6 +116,8 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T019a [P] [US2] Add Jest unit tests for changed services/utilities
+- [ ] T019b [US2] Add Supertest endpoint tests for changed routes
 
 ### Implementation for User Story 2
 
@@ -133,6 +140,7 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T025a [P] [US3] Add Playwright E2E tests for critical workflow paths
 
 ### Implementation for User Story 3
 
@@ -156,6 +164,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Coverage and regression tests in tests/unit/ and tests/integration/
+- [ ] TXXX [P] Mutation testing with Stryker for critical modules
 - [ ] TXXX Security hardening
 - [ ] TXXX Run quickstart.md validation
 - [ ] TXXX TypeScript strict-mode and lint compliance validation
@@ -251,7 +260,7 @@ With multiple developers:
 - Each user story should be independently completable and testable
 - Verify tests fail before implementing
 - Maintain 70/20/10 test distribution when adding new suites
-- Preserve >=80% business-logic coverage in CI
+- Preserve >=80% line, >=75% branch, and >=75% mutation coverage in CI
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
