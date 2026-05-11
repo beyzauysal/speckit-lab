@@ -1,35 +1,32 @@
-<!-- 
+<!--
 SYNC IMPACT REPORT
 ==================
-Version Change: v0.0.0 (template) → v1.0.0 (initialized)
+Version Change: v1.0.0 → v1.1.0
 
-Principles Established (4 total):
-  • I. Clean Code (new)
-  • II. TypeScript with Strict Mode (new)
-  • III. Testing Pyramid with 80% Coverage (new)
-  • IV. JSDoc Documentation (new)
+Modified Principles:
+  • I. Clean Code (clarified measurable constraints)
+  • II. TypeScript with Strict Mode (clarified boundary typing requirements)
+  • III. Testing Pyramid with 80% Coverage (clarified CI and PR enforcement)
+  • IV. JSDoc Documentation (clarified export-level documentation scope)
 
-New Sections Added:
-  • Technology Stack & Quality Standards
-  • Development Workflow
-  • Governance
+Added Sections:
+  • None
 
-Template Files Alignment Status:
-  ✅ spec-template.md - No changes needed (generic, supports all testing scenarios)
-  ✅ plan-template.md - No changes needed (generic, supports all tech stacks)
-  ✅ tasks-template.md - No changes needed (generic, supports all testing phases)
+Removed Sections:
+  • None
 
-Documentation Update Status:
-  ⚠ .github/copilot-instructions.md - References plan but is minimal (no action required)
+Templates Requiring Updates:
+  ✅ .specify/templates/plan-template.md (Constitution Check converted to explicit gates)
+  ✅ .specify/templates/tasks-template.md (testing changed from optional to constitution-driven mandatory)
+  ✅ .specify/templates/spec-template.md (already aligned; no update required)
+  ⚠ .specify/templates/commands/*.md (directory not present in repository; no action possible)
 
-Deferred Items: None - all placeholders completed
+Runtime Guidance Updates:
+  ✅ .github/copilot-instructions.md (already aligned; no update required)
+  ✅ specs/001-user-auth/quickstart.md (already aligned; no update required)
 
-Constitution enforces:
-  - TypeScript strict mode mandatory
-  - 4 core principles as non-negotiable development standards
-  - 80% coverage requirement on business logic
-  - JSDoc documentation mandatory for all exports
-  - Code review gates for principle compliance
+Deferred Items:
+  • None
 -->
 
 # SpecKit Lab Constitution
@@ -37,16 +34,37 @@ Constitution enforces:
 ## Core Principles
 
 ### I. Clean Code (NON-NEGOTIABLE)
-Code MUST be readable, maintainable, and self-explanatory. All functions MUST follow single responsibility principle; complexity MUST be justified and documented. Names MUST be descriptive; abbreviations prohibited except where domain-standard. Code duplication MUST be eliminated through abstraction. Functions MUST be under 50 lines; nested conditions MUST be extracted. Rationale: Clean code reduces bugs, speeds maintenance, enables team collaboration.
+Code MUST be readable, maintainable, and self-explanatory. Functions MUST follow
+single-responsibility, and complexity MUST be justified in code comments where
+it cannot be reduced. Names MUST be descriptive, with abbreviations allowed only
+for domain-standard terms. Duplication MUST be removed through safe abstraction.
+Functions SHOULD remain under 50 lines; exceptions MUST include rationale in the
+PR description. Rationale: clean code reduces defects and review time while
+preserving long-term maintainability.
 
 ### II. TypeScript with Strict Mode
-All code MUST be written in TypeScript with `strict: true` enabled in tsconfig.json. No `any` types permitted without explicit justification in a code comment. Type inference MUST be preferred over explicit annotations where unambiguous. Union types MUST be specific; `unknown` MUST be used over `any`. Module boundaries MUST have explicit type exports. Rationale: Type safety prevents runtime errors; strict mode enforces compile-time verification.
+All code MUST be written in TypeScript with `strict: true` enabled in
+tsconfig.json. `any` MUST NOT be used unless explicitly justified with an inline
+comment and tracked in PR review notes. Type inference SHOULD be preferred where
+unambiguous. `unknown` MUST be used instead of `any` for untrusted inputs.
+Module and service boundaries MUST declare explicit exported types. Rationale:
+strict typing prevents runtime failures and preserves refactor safety.
 
 ### III. Testing Pyramid with 80% Coverage
-Unit tests MUST form the pyramid base (70% of test count); integration tests MUST comprise 20%; end-to-end tests MUST comprise 10%. Business logic MUST achieve minimum 80% code coverage. All critical paths MUST have tests. Coverage MUST be tracked per PR. Rationale: Layered testing strategy balances speed with confidence; high coverage on business logic ensures reliability.
+The project MUST follow a testing pyramid target of 70% unit tests, 20%
+integration tests, and 10% end-to-end tests. Business logic MUST maintain at
+least 80% coverage in CI. Every critical path and regression fix MUST include
+automated tests. PRs MUST include coverage output and MUST NOT reduce business
+logic coverage below the threshold without explicit approval. Rationale: layered
+testing balances speed and confidence while preventing silent regressions.
 
 ### IV. JSDoc Documentation (MANDATORY)
-Every function, class, and module export MUST have JSDoc comments. JSDoc MUST include `@param`, `@returns`, and `@throws` tags where applicable. Complex logic MUST have inline comments explaining "why", not "what". README files MUST exist at package root with purpose, usage, and examples. Rationale: Documentation enables discoverability and reduces onboarding time.
+Every exported function, class, and module MUST include JSDoc. JSDoc MUST
+include `@param`, `@returns`, and `@throws` when applicable. Complex logic MUST
+include concise comments that explain intent and tradeoffs, not line-by-line
+mechanics. Each package root MUST contain a README with purpose, usage, and
+examples. Rationale: consistent documentation improves onboarding and lowers
+maintenance cost.
 
 ## Technology Stack & Quality Standards
 
@@ -58,13 +76,34 @@ Every function, class, and module export MUST have JSDoc comments. JSDoc MUST in
 
 ## Development Workflow
 
-1. **Code Review Gate**: All PRs MUST verify compliance with four core principles before merge
-2. **Pre-commit Checks**: TypeScript compilation, lint, and test coverage must pass
-3. **Coverage Verification**: PRs adding features MUST include tests maintaining 80% coverage
-4. **Documentation Review**: Reviewers MUST verify JSDoc completeness and accuracy
+1. **Code Review Gate**: All PRs MUST verify compliance with all four principles
+  before merge.
+2. **Automated Quality Gate**: Type checking, linting, and tests MUST pass in CI
+  before merge.
+3. **Coverage Verification**: Feature and bug-fix PRs MUST include tests that
+  preserve the 80% business-logic coverage floor.
+4. **Documentation Review**: Reviewers MUST verify JSDoc and README updates for
+  changed exports.
 
 ## Governance
 
-This Constitution supersedes all other practices and MUST be verified in every code review. Amendments require documented rationale, team discussion, and migration plan for existing code. Violations are tracked as technical debt and prioritized accordingly.
+This Constitution supersedes conflicting local practices and MUST be enforced in
+code review, CI policy, and planning artifacts.
 
-**Version**: 1.0.0 | **Ratified**: 2026-05-08 | **Last Amended**: 2026-05-08
+Amendment Procedure:
+1. Proposed amendment MUST include rationale, impacted principles/sections, and
+  migration impact.
+2. At least one maintainer review MUST approve the amendment.
+3. Related templates and guidance documents MUST be updated in the same change.
+
+Versioning Policy:
+- MAJOR: backward-incompatible governance or principle removals/redefinitions.
+- MINOR: new principles/sections or materially expanded mandatory guidance.
+- PATCH: clarifications, wording improvements, and non-semantic refinements.
+
+Compliance Review Expectations:
+- Every PR MUST complete a constitution compliance check.
+- Violations MUST be logged as technical debt with owner and due milestone.
+- A lightweight governance review MUST run at least once per release cycle.
+
+**Version**: 1.1.0 | **Ratified**: 2026-05-08 | **Last Amended**: 2026-05-11

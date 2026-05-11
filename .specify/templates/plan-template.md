@@ -31,7 +31,14 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Clean Code Gate**: Design limits complexity, duplication, and large
+  function risk; exceptions include explicit rationale.
+- [ ] **TypeScript Strict Gate**: Implementation confirms `strict: true`, typed
+  module boundaries, and no untracked `any` usage.
+- [ ] **Testing Gate**: Test strategy follows 70/20/10 pyramid target and
+  preserves >=80% business-logic coverage.
+- [ ] **Documentation Gate**: Exported APIs include JSDoc plan and README/docs
+  updates for changed behavior.
 
 ## Project Structure
 
